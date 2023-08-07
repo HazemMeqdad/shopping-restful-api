@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 
 const productRouter = require("./api/routes/products.js");
 const ordersRouter = require("./api/routes/orders.js");
+const userRouter = require("./api/routes/user.js");
 
 mongoose.connect("mongodb://localhost:27017")
 
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
 
 app.use("/products", productRouter);
 app.use("/orders", ordersRouter);
+app.use("/user", userRouter);
 
 app.use((req, res, next) => {
     const error = new Error("Not found");
