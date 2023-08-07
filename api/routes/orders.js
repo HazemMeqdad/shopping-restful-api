@@ -8,6 +8,7 @@ const router = express.Router();
 router.get("/", (req, res, next) => {
     Order.find()
         .select("product quentity _id")
+        .populate('product', "name")  // To fetch doc by reference 
         .exec()
         .then(docs => {
             res.status(200).json({
@@ -83,6 +84,7 @@ router.post("/", (req, res, next) => {
 router.get("/:orderId", (req, res, next) => {
     Order.findById(req.params.orderId)
         .select("product quentity _id")
+        .populate('product', "name price _id")  // To fetch doc by reference 
         .exec()
         .then(result => {
             if (!result){
