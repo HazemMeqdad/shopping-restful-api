@@ -2,6 +2,9 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const productRouter = require("./api/routes/products.js");
 const ordersRouter = require("./api/routes/orders.js");
